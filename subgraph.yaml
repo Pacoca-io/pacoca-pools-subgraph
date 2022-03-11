@@ -1,0 +1,70 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: DLaunch
+    network: bsc
+    source:
+      address: "0xD0CE6Aea3e4871F88e428a4651835FAfE35C7f43" #dlaunch
+      abi: UpgradeablePool
+      startBlock: 15288923
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - User
+      abis:
+        - name: UpgradeablePool
+          file: ./abis/UpgradeablePool.json
+      eventHandlers:
+        - event: Deposit(indexed address,uint256)
+          handler: handleDeposit
+        - event: Withdraw(indexed address,uint256)
+          handler: handleWithdraw
+      file: ./src/mapping.ts
+  - kind: ethereum
+    name: 5table
+    network: bsc
+    source:
+      address: "0xD0CEEC3233Ea1Aba3EC055660AbEC6e8b99e1c1c" #5table
+      abi: UpgradeablePool
+      startBlock: 15768687
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - User
+      abis:
+        - name: UpgradeablePool
+          file: ./abis/UpgradeablePool.json
+      eventHandlers:
+        - event: Deposit(indexed address,uint256)
+          handler: handleDeposit
+        - event: Withdraw(indexed address,uint256)
+          handler: handleWithdraw
+      file: ./src/mapping.ts
+  - kind: ethereum
+    name: Lemonn
+    network: bsc
+    source:
+      address: "0xD0CEf575f56092d92fC56c2F6B9D62D45E7DA73F" #lemonn
+      abi: UpgradeablePool
+      startBlock: 15951196
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - User
+      abis:
+        - name: UpgradeablePool
+          file: ./abis/UpgradeablePool.json
+      eventHandlers:
+        - event: Deposit(indexed address,uint256)
+          handler: handleDeposit
+        - event: Withdraw(indexed address,uint256)
+          handler: handleWithdraw
+      file: ./src/mapping.ts
